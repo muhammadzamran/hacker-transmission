@@ -22,7 +22,7 @@ export const Scene5Auth: React.FC<Scene5Props> = ({ onNext, onAuthSuccess }) => 
   const [errorMsg, setErrorMsg] = useState<string>('');
   const [isGranted, setIsGranted] = useState<boolean>(false);
 
-  const [useMockMode, setUseMockMode] = useState<boolean>(!hasValidSupabaseKeys());
+  const [useMockMode, setUseMockMode] = useState<boolean>(true);
 
   const handleAuthSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
