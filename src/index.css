@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Fira Code', 'Share Tech Mono', monospace;
+    background-color: #000000;
+    color: #00FF41;
+    overflow-x: hidden;
+  }
+}
+
+/* CRT Scanline & Screen effect */
+.crt-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.35) 50%
+  ), linear-gradient(
+    90deg, 
+    rgba(255, 0, 0, 0.04), 
+    rgba(0, 255, 0, 0.02), 
+    rgba(0, 0, 255, 0.04)
+  );
+  background-size: 100% 4px, 6px 100%;
+}
+
+/* Glitch & RGB Shift Illusions */
+@keyframes glitch-flicker {
+  0% { opacity: 1; text-shadow: 2px 0 0 red, -2px 0 0 cyan; }
+  2% { opacity: 0.8; text-shadow: -2px 0 0 red, 2px 0 0 blue; }
+  4% { opacity: 1; text-shadow: 1px 0 0 red, -1px 0 0 lime; }
+  6% { opacity: 0.3; text-shadow: none; }
+  8% { opacity: 1; text-shadow: 3px 0 0 red, -2px 0 0 cyan; }
+  10% { opacity: 1; text-shadow: none; }
+  100% { opacity: 1; text-shadow: none; }
+}
+
+.glitch-text {
+  animation: glitch-flicker 4s infinite linear alternate;
+}
+
+.rgb-shift {
+  text-shadow: 2px 0px 1px rgba(255,0,0,0.7), -2px 0px 1px rgba(0,255,255,0.7);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.7), 0 0 25px rgba(0, 255, 65, 0.4);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 0 0 25px rgba(255, 0, 0, 0.4);
+}
+
+.box-glow {
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.25), inset 0 0 15px rgba(0, 255, 65, 0.15);
+}
+
+.box-glow-red {
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3), inset 0 0 15px rgba(255, 0, 0, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #030a04;
+}
+::-webkit-scrollbar-thumb {
+  background: #00661a;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00FF41;
+}
+
+/* Radar / Scanner Line Animation */
+@keyframes scanline {
+  0% { top: 0%; opacity: 0.8; }
+  50% { opacity: 0.3; }
+  100% { top: 100%; opacity: 0.8; }
+}
+
+.scanner-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00FF41, transparent);
+  animation: scanline 6s infinite linear;
+  pointer-events: none;
+}
